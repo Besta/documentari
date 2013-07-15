@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+.videos{
+	width:100%;
+}
+
+
+.videos_video{
+	width:20%;
+	height:150px;
+	float: left;
+	margin: 5px 17px;
+}
