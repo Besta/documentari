@@ -12,9 +12,9 @@ class JConfig {
 	public $debug = '0';
 	public $debug_lang = '0';
 	public $dbtype = 'mysqli';
-	public $host = 'localhost';
-	public $user = 'root';
-	public $password = 'root';
+	public $host = 'db4free.net:3306';
+	public $user = 'documentari';
+	public $password = 'simodani';
 	public $db = 'documentari';
 	public $dbprefix = 'xu16b_';
 	public $live_site = '';
