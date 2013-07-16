@@ -1,7 +1,7 @@
 <?php
 class JConfig {
 	public $offline = '0';
-	public $offline_message = 'Sito fuori servizio per manutenzione.<br /> Riprovare più tardi.';
+	public $offline_message = 'Siti fuori servizio per manutenzione.<br /> Riprovare più tardi.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
 	public $sitename = 'documentari';
