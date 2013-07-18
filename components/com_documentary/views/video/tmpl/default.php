@@ -20,7 +20,7 @@ $lang->load('com_documentary', JPATH_ADMINISTRATOR);
     <div class="item_fields"> 
 		<div class="video_title"><?php echo $this->item->title ?></div>
 		<?php echo $this->item->iframe; ?>
-		<?php echo $this->item->durata; ?>
+		<?php echo $this->item->tempo; ?>
    
 		
     </div>

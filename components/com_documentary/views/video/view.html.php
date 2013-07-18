@@ -26,8 +26,9 @@ class DocumentaryViewVideo extends JViewLegacy {
      * Display the view
      */
     public function display($tpl = null) {
-        
-		$app	= JFactory::getApplication();
+      JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');  
+		    
+        $app	= JFactory::getApplication();
         $user		= JFactory::getUser();
         
         $this->state = $this->get('State');
