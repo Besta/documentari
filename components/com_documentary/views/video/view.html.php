@@ -26,8 +26,8 @@ class DocumentaryViewVideo extends JViewLegacy {
      * Display the view
      */
     public function display($tpl = null) {
-      JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');  
-		    
+		JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+    			    
         $app	= JFactory::getApplication();
         $user		= JFactory::getUser();
         
@@ -35,8 +35,11 @@ class DocumentaryViewVideo extends JViewLegacy {
         $this->item = $this->get('Data');
         $this->params = $app->getParams('com_documentary');
    		
+        $catTit=JHTML::_("Documentary.getCategoryName",$this->item->catid);
+        
+        
         $pathway = $app->getPathway();
-        $pathway->addItem('Categoria '.$this->item->catid, 'index.php?option=com_documentary&view=videos&catid='.$this->item->catid);
+        $pathway->addItem($catTit->title, 'index.php?option=com_documentary&view=videos&catid='.$this->item->catid);
         
         
         $pathway = $app->getPathway();
