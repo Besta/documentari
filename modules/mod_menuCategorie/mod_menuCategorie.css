@@ -1,0 +1,15 @@
+.categoriesMenu{
+	width:10%;
+	border-bottom: 1px solid black;
+	float:left;
+}
+
+.categoriesMenu a:active, .categoriesMenu a:hover{
+	color:#095197 !important;
+}
+
+.row_categoriesMenu{
+	padding:10px 0px;
+	text-align:center;
+	border-top: 1px solid black;
+}

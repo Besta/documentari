@@ -34,7 +34,14 @@ class DocumentaryViewVideo extends JViewLegacy {
         $this->item = $this->get('Data');
         $this->params = $app->getParams('com_documentary');
    		
-
+        $pathway = $app->getPathway();
+        $pathway->addItem('Categoria '.$this->item->catid, 'index.php?option=com_documentary&view=videos&catid='.$this->item->catid);
+        
+        
+        $pathway = $app->getPathway();
+        $pathway->addItem($this->item->title, 'index.php?option=com_documentary&view=video&id='.$this->item->id);
+        
+        
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {
             throw new Exception(implode("\n", $errors));

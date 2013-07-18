@@ -27,7 +27,7 @@ JHtml::_('bootstrap.tooltip');
 			unset($list[$i]);
 		}
 	}
-
+	
 	// Find last and penultimate items in breadcrumbs list
 	end($list);
 	$last_item_key = key($list);
