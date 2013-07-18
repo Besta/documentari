@@ -75,7 +75,10 @@ class DocumentaryModelVideo extends JModelForm
 			// Attempt to load the row.
 			if ($table->load($id))
 			{
-				// Check published state.
+       //  var_dump($table);
+          
+				
+        // Check published state.
 				if ($published = $this->getState('filter.published'))
 				{
 					if ($table->state != $published) {
@@ -90,7 +93,8 @@ class DocumentaryModelVideo extends JModelForm
 				$this->setError($error);
 			}
 		}
-
+    $this->_item->categoria=$this->getCategoryName($table->catid)->title;
+   // var_dump($this->getCategoryName($id)->title);
 		return $this->_item;
 	}
     

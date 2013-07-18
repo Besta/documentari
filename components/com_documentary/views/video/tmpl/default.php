@@ -15,12 +15,14 @@ $lang->load('com_documentary', JPATH_ADMINISTRATOR);
 
 ?>
 <?php if ($this->item) : ?>
-
-    <div class="item_fields">
+     <a href="<?php echo JRoute::_('index.php?option=com_documentary&view=videos&catid='.(int)$this->item->catid)?>"> <?php echo $this->item->categoria; ?> </a>
+     
+    <div class="item_fields"> 
 		<div class="video_title"><?php echo $this->item->title ?></div>
-		<iframe width="640" height="390" src="<?php echo $this->item->url ?>" frameborder="0" allowfullscreen></iframe>
+		<?php echo $this->item->iframe; ?>
+		<?php echo $this->item->durata; ?>
+   
 		
-
     </div>
 <?php
 else:
