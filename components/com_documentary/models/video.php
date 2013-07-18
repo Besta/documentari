@@ -93,9 +93,13 @@ class DocumentaryModelVideo extends JModelForm
 				$this->setError($error);
 			}
 		}
-    $this->_item->categoria=$this->getCategoryName($table->catid)->title;
-   // var_dump($this->getCategoryName($id)->title);
-		return $this->_item;
+    //$this->_item->categoria=$this->getCategoryName($table->catid)->title;
+    
+    $titolocat=JHtml::_("Documentary.getCategoryName",$table->catid );
+    //var_dump($titolocat->title);
+		$this->_item->categoria=$titolocat->title;
+    $this->_item->tempo= JHtml::_("Documentary.getConvert",$table->durata );
+    return $this->_item;
 	}
     
 	public function getTable($type = 'Video', $prefix = 'DocumentaryTable', $config = array())
