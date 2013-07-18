@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+ type="module"
+ version="3.1"
+ client="site"
+ method="upgrade">
+  <name>Modulo menù categorie</name> 
+  <author>Simone Bestazza</author> 
+  <creationDate>June 2013</creationDate> 
+  <version>1.0.0</version> 
+  <description>Visualizza tutte le categorie crowdfunding in un menù.</description> 
+  <files> 
+    <filename module="mod_menuCategorie">mod_menuCategorie.php</filename>
+    <filename module="mod_menuCategorie">mod_menuCategorie.xml</filename>
+    <filename module="mod_menuCategorie">mod_menuCategorie.css</filename>
+    <filename module="mod_menuCategorie">mod_menuCategorie.js</filename>
+  </files> 
+</extension>

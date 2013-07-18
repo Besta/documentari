@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
+
 /**
  * View class for a list of Documentary.
  */
@@ -35,6 +36,13 @@ class DocumentaryViewVideos extends JViewLegacy
         $this->pagination	= $this->get('Pagination');
         $this->params       = $app->getParams('com_documentary');
         $this->option 		= JFactory::getApplication()->input->getCmd("option");
+        $cat=JFactory::getApplication()->input->getInt('catid', 0);
+		
+		if(!empty($cat))
+		{
+			$pathway = $app->getPathway();
+	        $pathway->addItem("Categoria ".$cat, 'index.php?option=com_documentary&view=videos&catid='.$cat);
+		}
         
         
         // Check for errors.
