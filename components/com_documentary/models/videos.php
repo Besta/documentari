@@ -76,11 +76,12 @@ class DocumentaryModelVideos extends JModelList {
 
         
 		// Join over the created by field 'created_by'
-		$query->select('created_by.name AS created_by');
+		$query->select('created_by.name AS created_by,cat.title AS tcat');
 		$query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
-        
+    $query->innerjoin('#__categories AS cat ON cat.id = a.catid');    
 		$categoryId = $this->getState("list.catid", 0);
-		
+		$query->where('a.state = 1');
+    $query->order('a.created_date ASC');
 		if(!empty($categoryId)) {
 			$query->where('a.catid = '.(int)$categoryId);
 		}

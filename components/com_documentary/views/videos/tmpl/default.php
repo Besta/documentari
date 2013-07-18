@@ -20,12 +20,17 @@ defined('_JEXEC') or die;
 			<?php
 						$show = true;
 						?>
-						<div class="videos_video" >
-								<a href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>">
-									<img src="<?php echo $item->image?>"/> 
+            
+						<div class="videos_video" >                                                                                                                       
+								 <a href="<?php echo JRoute::_('index.php?option=com_documentary&view=videos&catid='.(int)$item->catid)?>"> <?php echo $item->tcat ?>  </a>
+                <a href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>">
+									
+                  <img src="<?php echo $item->image?>"/> 
 									<br/>
-									<span class="video_title"><?php echo $item->title;?></span>
+									<span class="video_title"><?php echo $item->title;?>  </span>
+                  
 								</a>
+                <?php echo $item->durata; ?>
 						</div>
 		<?php } ?>
         <?php
