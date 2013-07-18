@@ -29,6 +29,8 @@ class DocumentaryViewVideos extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+		JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+		
         $app                = JFactory::getApplication();
         
         $this->state		= $this->get('State');
@@ -36,12 +38,13 @@ class DocumentaryViewVideos extends JViewLegacy
         $this->pagination	= $this->get('Pagination');
         $this->params       = $app->getParams('com_documentary');
         $this->option 		= JFactory::getApplication()->input->getCmd("option");
-        $cat=JFactory::getApplication()->input->getInt('catid', 0);
+        $catId				=JFactory::getApplication()->input->getInt('catid', 0);
 		
-		if(!empty($cat))
+		if(!empty($catId))
 		{
 			$pathway = $app->getPathway();
-	        $pathway->addItem("Categoria ".$cat, 'index.php?option=com_documentary&view=videos&catid='.$cat);
+			$catTit=JHTML::_("Documentary.getCategoryName",$catId);
+	        $pathway->addItem($catTit->title, 'index.php?option=com_documentary&view=videos&catid='.$catId);
 		}
         
         
