@@ -49,6 +49,8 @@ class DocumentaryModelVideos extends JModelList {
         $catid = JFactory::getApplication()->input->getInt('catid', 0);
         $this->setState('list.catid', $catid);
         
+        $search = JFactory::getApplication()->input->getString('search', '');
+        $this->setState('filter.search', $search);
 
         // List state information.
         parent::populateState($ordering, $direction);
