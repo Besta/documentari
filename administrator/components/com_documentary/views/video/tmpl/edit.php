@@ -33,9 +33,13 @@ $document->addStyleSheet('components/com_documentary/assets/css/documentary.css'
         else{
             
             if (task != 'video.cancel' && document.formvalidator.isValid(document.id('video-form'))) {
-                var index=document.getElementById("jform_url").value.lastIndexOf("/");
-                var img=document.getElementById("jform_url").value.substring(index);
-            	document.getElementById("video_image").value="http://img.youtube.com/vi"+img+"/0.jpg";
+                if(document.getElementById("jform_iframe").value.lastIndexOf("youtube.com")){
+	                var index=document.getElementById("jform_iframe").value.lastIndexOf("embed/")+5;
+	                var substr=document.getElementById("jform_iframe").value.substring(index);
+	                var index=substr.indexOf('\"');	
+	                var img=substr.substring(0,index);
+	            	document.getElementById("jform_image").value="http://img.youtube.com/vi"+img+"/0.jpg";
+                }
                 Joomla.submitform(task, document.getElementById('video-form'));
             }
             else {
@@ -60,16 +64,18 @@ $document->addStyleSheet('components/com_documentary/assets/css/documentary.css'
 			</div>
 
 				<?php echo $this->form->getInput('created_date'); ?>			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('url'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('url'); ?></div>
+				<div class="control-label"><?php echo $this->form->getLabel('iframe'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('iframe'); ?></div>
 			</div>
 			<div class="control-group">
 				<div class="control-label"><?php echo $this->form->getLabel('title'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('title'); ?></div>
 			</div>
-				<input type="hidden" id="video_image" name="jform[image]" value="<?php echo $this->item->image; ?>" />
-
-
+			<div class="control-group">
+				<div class="control-label"><?php echo $this->form->getLabel('image'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('image'); ?></div>
+			</div>
+			Se &egrave un video di youtube non inserire l'immagine
             </fieldset>
         </div>
 

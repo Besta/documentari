@@ -120,9 +120,10 @@ class DocumentaryViewVideos extends JViewLegacy
 		'a.id' => JText::_('JGRID_HEADING_ID'),
 		'a.created_by' => JText::_('COM_DOCUMENTARY_VIDEOS_CREATED_BY'),
 		'a.created_date' => JText::_('COM_DOCUMENTARY_VIDEOS_CREATED_DATE'),
-		'a.url' => JText::_('COM_DOCUMENTARY_VIDEOS_URL'),
+		'a.iframe' => JText::_('COM_DOCUMENTARY_VIDEOS_URL'),
 		'a.title' => JText::_('COM_DOCUMENTARY_VIDEOS_TITLE'),
 		'a.image' => JText::_('COM_DOCUMENTARY_VIDEOS_IMAGE'),
+		'a.catid' => JText::_('COM_DOCUMENTARY_VIDEOS_CATEGORY'),
 		);
 	}
 

@@ -42,6 +42,8 @@ $sortFields = $this->getSortFields();
 		} else {
 			dirn = direction.options[direction.selectedIndex].value;
 		}
+		console.log(order);
+		console.log(dirn);
 		Joomla.tableOrdering(order, dirn, '');
 	}
 </script>
@@ -117,13 +119,16 @@ if (!empty($this->extra_sidebar)) {
 				<?php echo JHtml::_('grid.sort',  'COM_DOCUMENTARY_VIDEOS_CREATED_DATE', 'a.created_date', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
-				<?php echo JHtml::_('grid.sort',  'COM_DOCUMENTARY_VIDEOS_URL', 'a.url', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
 				<?php echo JHtml::_('grid.sort',  'COM_DOCUMENTARY_VIDEOS_TITLE', 'a.title', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_DOCUMENTARY_VIDEOS_URL', 'a.iframe', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('grid.sort',  'COM_DOCUMENTARY_VIDEOS_IMAGE', 'a.image', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
+				<?php echo JHtml::_('grid.sort',  'COM_DOCUMENTARY_VIDEOS_CATEGORY', 'a.catid', $listDirn, $listOrder); ?>
 				</th>
                     
                     
@@ -189,7 +194,6 @@ if (!empty($this->extra_sidebar)) {
                 <?php endif; ?>
                     
 				<td>
-
 					<?php echo $item->created_by; ?>
 				</td>
 				<td>
@@ -198,30 +202,33 @@ if (!empty($this->extra_sidebar)) {
 				</td>
 				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'videos.', $canCheckin); ?>
+				<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'videos.', $canCheckin); ?>
 				<?php endif; ?>
 				<?php if ($canEdit) : ?>
 					<a href="<?php echo JRoute::_('index.php?option=com_documentary&task=video.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->url); ?></a>
+					<?php echo $this->escape($item->title); ?></a>
 				<?php else : ?>
-					<?php echo $this->escape($item->url); ?>
+					<?php echo $this->escape($item->title); ?>
 				<?php endif; ?>
 				</td>
-				<td>
-
-					<?php echo $item->title; ?>
+				<td style="width:30%">
+				<?php echo $this->escape($item->iframe); ?></a>
 				</td>
 				<td>
 
-					<?php echo $item->image; ?>
+					<img src="<?php echo $item->image; ?>" style="height:50px;"/>
+				</td>		
+				<td>
+				
+						<a href='index.php?option=com_documentary&view=videos&catid=<?php echo $item->catid; ?>'"><?php echo $item->catName; ?></a>
 				</td>
-
 
                 <?php if (isset($this->items[0]->id)): ?>
 					<td class="center hidden-phone">
 						<?php echo (int) $item->id; ?>
 					</td>
                 <?php endif; ?>
+
 				</tr>
 				<?php endforeach; ?>
 			</tbody>

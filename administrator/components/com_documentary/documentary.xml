@@ -41,7 +41,7 @@
         <submenu>
             
 			<menu link="option=com_documentary&amp;view=videos" view="videos" img="components/com_documentary/assets/images/s_videos.png" alt="Documentary/Videos">COM_DOCUMENTARY_TITLE_VIDEOS</menu>
-
+			<menu link="option=com_categories&extension=com_documentary;view=videos" view="videos" img="components/com_documentary/assets/images/s_categoriess.png" alt="Documentary/Categoriess">COM_DOCUMENTARY_TITLE_CATEGORIES</menu>
         </submenu>
         <files folder="administrator">
             <filename>access.xml</filename>

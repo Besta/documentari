@@ -25,6 +25,11 @@ class DocumentaryHelper
 			'index.php?option=com_documentary&view=videos',
 			$vName == 'videos'
 		);
+		JHtmlSidebar::addEntry(
+		JText::_('COM_DOCUMENTARY_TITLE_CATEGORIES'),
+		'index.php?option=com_categories&extension=com_documentary',
+		$vName == 'categories'
+		);
 	}
 
 	/**

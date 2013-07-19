@@ -28,7 +28,7 @@ class DocumentaryController extends JControllerLegacy
 
 		$view		= JFactory::getApplication()->input->getCmd('view', 'videos');
         JFactory::getApplication()->input->set('view', $view);
-
+		
 		parent::display($cachable, $urlparams);
 
 		return $this;
