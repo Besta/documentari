@@ -29,10 +29,11 @@ class DocumentaryModelvideos extends JModelList {
                                 'id', 'a.id',
                 'created_by', 'a.created_by',
                 'created_date', 'a.created_date',
-                'url', 'a.url',
+                'iframe', 'a.iframe',
                 'title', 'a.title',
                 'image', 'a.image',
-
+            	'catid', 'a.catid',
+				
             );
         }
 
@@ -55,7 +56,8 @@ class DocumentaryModelvideos extends JModelList {
         $published = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
         $this->setState('filter.state', $published);
 
-        
+        $catid = JFactory::getApplication()->input->getInt('catid', 0);
+        $this->setState('list.catid', $catid);
 
         // Load the parameters.
         $params = JComponentHelper::getParams('com_documentary');
@@ -98,16 +100,19 @@ class DocumentaryModelvideos extends JModelList {
         // Select the required fields from the table.
         $query->select(
                 $this->getState(
-                        'list.select', 'a.*'
+                        'list.select', 'a.iframe, a.*'
                 )
         );
         $query->from('`#__documentary_video` AS a');
-
+        
         
 		// Join over the user field 'created_by'
 		$query->select('created_by.name AS created_by');
 		$query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
-
+		
+		$query->select('c.title AS catName');
+		$query->join('LEFT', '#__categories AS c ON c.id = a.catid');
+		
         
 
         // Filter by search in title
@@ -121,8 +126,10 @@ class DocumentaryModelvideos extends JModelList {
             }
         }
 
+        $categoryId = $this->getState("list.catid", 0);        
         
-
+		if(!empty($categoryId))
+			$query->where('( a.catid='.$categoryId.')');
 
         // Add the list ordering clause.
         $orderCol = $this->state->get('list.ordering');

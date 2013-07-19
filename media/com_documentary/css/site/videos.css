@@ -6,8 +6,41 @@
 
 
 .videos_video{
-	width:20%;
-	height:150px;
+	width: 30.1%;
+	height: 210px;
 	float: left;
-	margin: 5px 17px;
+	display: block;
+	margin: 5px 15px;
+}
+
+.videos_video:hover{
+	color:white;
+}
+
+
+.videos_top{
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.65);
+	color: white;
+	padding: 4px;
+}
+
+.videos_top:hover{
+	text-decoration: none;
+}
+
+.videos_bot{
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.65);
+	top:158px;
+	color: white;
+	padding: 4px;
+}
+
+.videos_time{
+	float:right;
+}
+
+.videos_title{
+	
 }

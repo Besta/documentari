@@ -39,7 +39,7 @@ class DocumentaryViewVideos extends JViewLegacy
         $this->params       = $app->getParams('com_documentary');
         $this->option 		= JFactory::getApplication()->input->getCmd("option");
         $catId				=JFactory::getApplication()->input->getInt('catid', 0);
-		
+        
 		if(!empty($catId))
 		{
 			$pathway = $app->getPathway();
