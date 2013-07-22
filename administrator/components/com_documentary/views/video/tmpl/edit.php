@@ -33,7 +33,7 @@ $document->addStyleSheet('components/com_documentary/assets/css/documentary.css'
         else{
             
             if (task != 'video.cancel' && document.formvalidator.isValid(document.id('video-form'))) {
-                if(document.getElementById("jform_iframe").value.lastIndexOf("youtube.com")){
+                if(document.getElementById("jform_iframe").value.lastIndexOf("youtube.com")>0){
 	                var index=document.getElementById("jform_iframe").value.lastIndexOf("embed/")+5;
 	                var substr=document.getElementById("jform_iframe").value.substring(index);
 	                var index=substr.indexOf('\"');	
@@ -53,29 +53,33 @@ $document->addStyleSheet('components/com_documentary/assets/css/documentary.css'
     <div class="row-fluid">
         <div class="span10 form-horizontal">
             <fieldset class="adminform">
-
-                			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('id'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('id'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('created_by'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('created_by'); ?></div>
-			</div>
-
-				<?php echo $this->form->getInput('created_date'); ?>			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('iframe'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('iframe'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('title'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('title'); ?></div>
-			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('image'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('image'); ?></div>
-			</div>
-			Se &egrave un video di youtube non inserire l'immagine
+				<div class="control-group">
+					<div class="control-label"><?php echo $this->form->getLabel('id'); ?></div>
+					<div class="controls"><?php echo $this->form->getInput('id'); ?></div>
+				</div>
+				<div class="control-group">
+					<div class="control-label"><?php echo $this->form->getLabel('created_by'); ?></div>
+					<div class="controls"><?php echo $this->form->getInput('created_by'); ?></div>
+				</div>
+	
+					<?php echo $this->form->getInput('created_date'); ?>			<div class="control-group">
+					<div class="control-label"><?php echo $this->form->getLabel('iframe'); ?></div>
+					<div class="controls"><?php echo $this->form->getInput('iframe'); ?></div>
+				</div>
+				<div class="control-group">
+					<div class="control-label"><?php echo $this->form->getLabel('title'); ?></div>
+					<div class="controls"><?php echo $this->form->getInput('title'); ?></div>
+				</div>
+				<div class="control-group">
+					<div class="control-label"><?php echo $this->form->getLabel('catid'); ?></div>
+					<div class="controls"><?php echo $this->form->getInput('catid'); ?></div>
+				</div>
+				<div class="control-group">
+					<div class="control-label"><?php echo $this->form->getLabel('image'); ?></div>
+					<div class="controls"><?php echo $this->form->getInput('image'); ?></div>
+				</div>
+	
+				Se &egrave un video di youtube non inserire l'immagine
             </fieldset>
         </div>
 
