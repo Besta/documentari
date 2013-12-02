@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @version     1.0.0
  * @package     com_documentary
@@ -11,25 +12,51 @@ defined('_JEXEC') or die;
 ?>
 <?php 
 	$show = false; 
-	$height = (ceil(count($this->items)/3)*220); 
+	$height = (ceil(count($this->items)/4)*220); 
 ?>
-<div class="videos" style="height:<?php echo $height ?>px">
+
+<div id="videos">
 
 		
         <?php foreach ($this->items as $item) { ?>
 			<?php
+						$date =&JFactory::getDate($item->created_date);
+						$date =JHtml::date($date , 'd-m-Y');
 						$show = true;
-						$item->tempo= JHtml::_("Documentary.getConvert",$item->durata );
-						?>            
-						<a class="videos_video" id="video_<?php echo $item->id ?>" style="background-size: 100%; background-image:url(<?php echo $item->image?>)" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"  >     
-							<div class="videos_top"><?php
-               					 echo $item->tcat 
-               				?></div>
-							<div class="videos_bot">
-                				<span class="videos_title"><?php echo $item->title ?></span>
-                				<span class="videos_time"><?php echo $item->tempo ?></span>
-                			</div>
-                		</a>
+						$item->tempo= JHtml::_("Documentary.getConvert",$item->tempo );
+
+						?>
+	
+			 <div class="video_container">
+			 <div class="time_n video_button">
+			 <?php echo $item->tempo; ?>
+			 <div class="time video_button"></div>
+			 </div>
+			 <a class="play video_button"  href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"></a>
+			 
+			 <div class="flip_n video_button"><div class="info">info</div>
+			 <div class="flip video_button"></div>
+			 </div>
+			 <div id="card" class="video">
+   			 
+     		 
+     		 <div class="front">
+     		 
+     		 <a class="video_title" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"><?php echo ucfirst(strtolower($item->title)); ?></a>
+			 <a class="video_link"  style="background-image:url(<?php echo $item->image?>)" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"  ></a>
+     		 </div>
+      		<div class="back">
+      		
+      		 <a class="video_title" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"><?php echo ucfirst(strtolower($item->title)); ?></a>
+      		 <a class="video_description" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"><span>Descrizione : </span><?php echo $item->description; ?></a>
+      		 <div class="video_data video_button" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>">pubblicato: <?php echo $date; ?></div>
+      		 <div class="video_like video_button">like: 50  rating: 80%</div>
+      		 
+      		 </div>
+      
+   			 </div>			
+			 </div>			
+						
 
 		<?php } ?>
         <?php
@@ -44,4 +71,3 @@ defined('_JEXEC') or die;
         <?php echo $this->pagination->getPagesLinks(); ?>
     </div>
 <?php endif; ?>
-

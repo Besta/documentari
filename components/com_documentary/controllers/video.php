@@ -15,6 +15,7 @@ require_once JPATH_COMPONENT.'/controller.php';
 /**
  * Video controller class.
  */
+
 class DocumentaryControllerVideo extends DocumentaryController
 {
 

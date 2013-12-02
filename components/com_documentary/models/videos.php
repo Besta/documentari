@@ -82,6 +82,7 @@ class DocumentaryModelVideos extends JModelList {
 		$query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
     $query->innerjoin('#__categories AS cat ON cat.id = a.catid');    
 		$categoryId = $this->getState("list.catid", 0);
+		
 		$query->where('a.state = 1');
     $query->order('a.created_date ASC');
 		if(!empty($categoryId)) {
@@ -99,8 +100,7 @@ class DocumentaryModelVideos extends JModelList {
             }
         }
 
-        
-
+       
         return $query;
     }
 

@@ -8,6 +8,7 @@
  */
 
 defined('_JEXEC') or die;
+
 JHtml::_('bootstrap.tooltip');
 
 ?>
@@ -27,17 +28,18 @@ JHtml::_('bootstrap.tooltip');
 			unset($list[$i]);
 		}
 	}
-	
+
 	// Find last and penultimate items in breadcrumbs list
 	end($list);
 	$last_item_key = key($list);
 	prev($list);
 	$penult_item_key = key($list);
 
-	// Generate the trail
-	foreach ($list as $key => $item) :
 	// Make a link if not the last item in the breadcrumbs
 	$show_last = $params->get('showLast', 1);
+
+	// Generate the trail
+	foreach ($list as $key => $item) :
 	if ($key != $last_item_key)
 	{
 		// Render all but last item - along with separator
@@ -61,7 +63,7 @@ JHtml::_('bootstrap.tooltip');
 	elseif ($show_last)
 	{
 		// Render last item if reqd.
-		echo '<li>';
+		echo '<li class="active">';
 		echo '<span>' . $item->name . '</span>';
 		echo '</li>';
 	}

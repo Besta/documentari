@@ -15,14 +15,21 @@ $lang->load('com_documentary', JPATH_ADMINISTRATOR);
 
 ?>
 <?php if ($this->item) : ?>
-     <a href="<?php echo JRoute::_('index.php?option=com_documentary&view=videos&catid='.(int)$this->item->catid)?>"> <?php echo $this->item->categoria; ?> </a>
-     
+        
     <div class="item_fields"> 
-		<div class="video_title"><?php echo $this->item->title ?></div>
-		<?php echo $this->item->iframe; ?>
-		<?php echo $this->item->tempo; ?>
-   
-		
+		<div class="video_title"> <?php echo $this->item->title ?></div>
+		<div class="video_video"><?php echo $this->item->iframe; ?> </div>
+		<div class="video_categoria"> TITOLO: <?php echo $this->item->title;?></div>
+		<div class="video_tempo">Durata: <?php echo $this->item->tempo; ?></div>
+        
+
+		<div class="video_categoria"> Categoria: <a href="<?php echo JRoute::_('index.php?option=com_documentary&view=videos&catid='.(int)$this->item->catid)?>"> <?php echo $this->item->categoria; ?> </a>   </div>
+	    <div class="video_like"><input type="hidden" value="1" id="input_like" > Like: <?php echo $this->item->vlike; ?></div>
+	    <div class="video_rank"><?php echo $this->item->like_percents; ?>%</div>
+	    <div class="video_dislike"><input type="hidden" value="-1" id="input_like" >Dislike: <?php echo $this->item->vdislike; ?></div>
+	    
+    <div class="video_visto">Gia visto</div>
+    <input type="hidden" value="<?php echo $this->item->id; ?>" id="id_video">
     </div>
 <?php
 else:

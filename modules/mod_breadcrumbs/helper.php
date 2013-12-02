@@ -24,6 +24,7 @@ class ModBreadCrumbsHelper
 		$app		= JFactory::getApplication();
 		$pathway	= $app->getPathway();
 		$items		= $pathway->getPathWay();
+
 		$count = count($items);
 
 		// Don't use $items here as it references JPathway properties directly
@@ -34,6 +35,7 @@ class ModBreadCrumbsHelper
 			$crumbs[$i]->name = stripslashes(htmlspecialchars($items[$i]->name, ENT_COMPAT, 'UTF-8'));
 			$crumbs[$i]->link = JRoute::_($items[$i]->link);
 		}
+
 		if ($params->get('showHome', 1))
 		{
 			$item = new stdClass;
@@ -41,7 +43,7 @@ class ModBreadCrumbsHelper
 			$item->link = JRoute::_('index.php?Itemid=' . $app->getMenu()->getDefault()->id);
 			array_unshift($crumbs, $item);
 		}
-		
+
 		return $crumbs;
 	}
 
