@@ -26,11 +26,20 @@ abstract class JHtmlDocumentary
         $db->setQuery($query);
         return $db->loadObject();
     }
-       public static function getConvert($total_seconds) {
+    
+    
+     public static function getConvert($total_seconds) {
              $total_time =intval(intval($total_seconds)/ 3600).":"; 
              $total_time.=str_pad(intval(($total_seconds/60)%60),2,"0",STR_PAD_LEFT).":"; 
              $total_time.=str_pad(intval($total_seconds%60),2,"0",STR_PAD_LEFT);
           return $total_time;
           }
+          
+          
+        public static function calculatePercent($funded, $goal) {
+
+              $value = ($funded/$goal) * 100;
+        	    return round($value, 2);
+        	}     
 }
 

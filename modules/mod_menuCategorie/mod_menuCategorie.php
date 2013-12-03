@@ -13,25 +13,30 @@ $document->addScript(JURI::root() . 'modules/mod_menuCategorie/mod_menuCategorie
 $db = JFactory::getDbo();
 $query = $db->getQuery(true);
 
-$query->select('id,title,alias,extension,published');
+$query->select('id,title,alias,extension,published,params');
 $query->from('#__categories');
 $query->where('extension = "com_documentary"');
 $query->where('published = 1');
 $query->order('title');
 
 $db->setQuery($query);
-
 $categories = $db->loadObjectList();
 
 ?>
-	<ul class="nav menu">
+	<ul id="menu_cate" class="nav">
 	<?php foreach($categories as $item) { 
+		$catparams = json_decode($item->params);
 		echo '<li>';
-		echo '<a href="'.JURI::root().'index.php?option=com_documentary&view=videos&catid='.$item->id.'">'.$item->title.'</a>';
+		echo '<a href="'.JURI::root().'index.php?option=com_documentary&view=videos&catid='.$item->id.'">';
+		echo '<img  src="'.$catparams->image.'"/>';
+		echo '<span>'.$item->title.'</span>';
+		echo '</a>';
 		echo '</li>';
 	}
 	?>
 	</ul>
+	
+	
 
 
 

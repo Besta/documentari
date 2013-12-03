@@ -75,7 +75,6 @@ class DocumentaryModelVideo extends JModelForm
 			// Attempt to load the row.
 			if ($table->load($id))
 			{
-       //  var_dump($table);
           
 				
         // Check published state.
@@ -98,14 +97,28 @@ class DocumentaryModelVideo extends JModelForm
     $titolocat=JHtml::_("Documentary.getCategoryName",$table->catid );
     //var_dump($titolocat->title);
 		$this->_item->categoria=$titolocat->title;
-    $this->_item->tempo= JHtml::_("Documentary.getConvert",$table->durata );
-    return $this->_item;
+    $this->_item->tempo= JHtml::_("Documentary.getConvert",$table->tempo );
+    
+    if(($table->vlike+$table->vdislike)!=0)
+      {
+
+      $this->_item->like_percents = JHtml::_("Documentary.calculatePercent",$table->vlike,$table->vlike+$table->vdislike);
+      
+      } 
+      else
+      {
+      $this->_item->like_percents=0;
+      }
+
+ return $this->_item;
 	}
     
 	public function getTable($type = 'Video', $prefix = 'DocumentaryTable', $config = array())
 	{   
         $this->addTablePath(JPATH_COMPONENT_ADMINISTRATOR.'/tables');
+        
         return JTable::getInstance($type, $prefix, $config);
+        
 	}     
 
     
@@ -200,7 +213,8 @@ class DocumentaryModelVideo extends JModelForm
 	protected function loadFormData()
 	{
 		$data = $this->getData(); 
-        
+       
+
         return $data;
 	}
 
@@ -262,7 +276,7 @@ class DocumentaryModelVideo extends JModelForm
         return true;
     }
     
-    function getCategoryName($id){
+    public function getCategoryName($id){
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query 
@@ -272,5 +286,47 @@ class DocumentaryModelVideo extends JModelForm
         $db->setQuery($query);
         return $db->loadObject();
     }
+    
+    public function setLike($id_v,$like) {
+        
+            $browser = &JBrowser::getInstance();  
+            if(!$browser->isRobot() && $id_v>0 && ($like==-1 || $like==1 ))// controllo se è un robot
+               {         
+                   $varses=$id_v.'_like';
+                   $session =&JFactory::getSession();
+
+                   if(!$session->has($varses))
+                    { 
+                       $session->set($varses,'1');
+                       if($session->has($varses))
+                       {
+                       $db =& JFactory::getDBO();
+                        $query = $db->getQuery(true);
+                        if($like==1)
+                        $query='UPDATE #__documentary_video SET '.$query->quoteName("vlike").'='.$query->quoteName("vlike").'+1 where id='.$id_v;
+                        elseif($like==-1)
+                        $query='UPDATE #__documentary_video SET '.$query->quoteName("vdislike").'='.$query->quoteName("vdislike").'+1 where id='.$id_v;
+                    
+                        
+                       $db->setQuery($query);
+                       $result=$db->query(); 
+                       $result=true;
+                       }
+                    }
+                    else
+                    {
+                      $result=false;
+                    } 
+          }
+          else
+          {
+          $result=false;
+          }
+
+		return $result;
+		
+    }
+    
+   
     
 }

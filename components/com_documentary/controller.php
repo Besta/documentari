@@ -15,4 +15,8 @@ jimport('joomla.application.component.controller');
 class DocumentaryController extends JControllerLegacy
 {
 
+
 }
+
+
+

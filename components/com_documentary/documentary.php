@@ -14,5 +14,7 @@ jimport('joomla.application.component.controller');
 
 // Execute the task.
 $controller	= JControllerLegacy::getInstance('Documentary');
+// echo JFactory::getApplication()->input->get('task');
+// die('1');
 $controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();

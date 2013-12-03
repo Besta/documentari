@@ -102,9 +102,9 @@ class DocumentaryViewVideos extends JViewLegacy
 		{
 			$this->document->setMetadata('robots', $this->params->get('robots'));
 		}
-		
 		$this->document->addStyleSheet( 'media/'.$this->option.'/css/site/videos.css');
-		
+		$this->document->addScript('media/'.$this->option.'/js/site/videos.js');
+
 	}    
     	
 }
