@@ -1,4 +1,3 @@
-
 var BrowserDetect = 
 {
     init: function () 
@@ -40,32 +39,26 @@ var BrowserDetect =
 };
 BrowserDetect.init();
 
-
-
-jQuery(document).ready(function() {
-	
+function setAutoHeight(){
 	 var w=jQuery('#videos').width();
 	 var w2=jQuery('#videos .video_container').width();
 	 var mar=(w*0.4)/100;
-
-	 //var ncol=3;
-	 
-	 //jQuery('.video_container').width(w/ncol-mar-1);
 	 jQuery('.video_container').height((w2-mar-1)*9/16);
-	 
-	 
-	 
 	 var ht=jQuery('.video_container').find('.video_title').height()-3;
 	 jQuery('.video_container').find('.video_title').css('font-size',ht+'px');
 	 jQuery('.video_container').find('.video_description').css('font-size',ht+'px');
-	 
-	});
+}
+
+jQuery(window).resize(function() {
+	setAutoHeight();
+});
+
+jQuery(document).ready(function() {
+	setAutoHeight();
+});
 
 
 jQuery(document).ready(function() {
-
-	
-
 
    	  jQuery( ".flip_n" ).click(function() {
    		
