@@ -56,8 +56,11 @@ jQuery(document).ready(function() {
 	 
 	 
 	 var ht=jQuery('.video_container').find('.video_title').height()-3;
+	 var hf=jQuery('.video_container').find('.video_title').height()-3;
 	 jQuery('.video_container').find('.video_title').css('font-size',ht+'px');
 	 jQuery('.video_container').find('.video_description').css('font-size',ht+'px');
+	// jQuery('.video_container').find('.flip_n').css('font-size',hf+'px');
+	 
 	 
 	});
 
@@ -66,34 +69,41 @@ jQuery(document).ready(function() {
 
 	
 
-
-   	  jQuery( ".flip_n" ).click(function() {
+	 jQuery(this).find(".play_link").hide();
+	 
+   	  jQuery(".flip_n").click(function() {
    		
    		  if(BrowserDetect.browser=='Explorer')
    		  {
    			
-   			 if(!jQuery(this).next(".video").find(".back").hasClass('flipped_ie'))
+   			 if(!jQuery(this).nextAll(".video").find(".back").hasClass('flipped_ie'))
    				 { 
    				
-		   			 jQuery(this).next(".video").find(".back").addClass('flipped_ie');
-		   			 jQuery(this).next(".video").find(".back").css('transform','rotateY(0deg)');
-		   			 jQuery(this).next(".video").find(".front").fadeOut(500);
-		   			 jQuery(this).next(".video").find(".back").fadeIn(500);
+		   			 jQuery(this).nextAll(".video").find(".back").addClass('flipped_ie');
+		   			 jQuery(this).nextAll(".video").find(".back").css('transform','rotateY(0deg)');
+		   			 jQuery(this).nextAll(".video").find(".front").fadeOut(500);
+		   			 jQuery(this).nextAll(".video").find(".back").fadeIn(500);
    				 }
    			 else
    				 {
-   			
-	   			 jQuery(this).next(".video").find(".back").css('transform','rotateY(180deg)');
-	   			 jQuery(this).next(".video").find(".back").removeClass('flipped_ie');
-	   			 jQuery(this).next(".video").find(".back").fadeOut(500); 
-	   			 jQuery(this).next(".video").find(".front").fadeIn(500);
+	   			 jQuery(this).nextAll(".video").find(".back").css('transform','rotateY(180deg)');
+	   			 jQuery(this).nextAll(".video").find(".back").removeClass('flipped_ie');
+	   			 jQuery(this).nextAll(".video").find(".back").fadeOut(500); 
+	   			 jQuery(this).nextAll(".video").find(".front").fadeIn(500);
    				 }
+   		  
    		  }
    		  else
-   		  	{			  
-   			  jQuery(this).next(".video").toggleClass('flipped');
+   		  	{	
    			  
+   			  jQuery(this).nextAll(".video").toggleClass('flipped');
+   			  
+//   			  if(jQuery(this).next(".video").hasClass('flipped'))
+//				   jQuery( this ).find(".play_link").show();   
    		  	}
+   		      jQuery(this).nextAll(".play").toggle();
+   		      jQuery(this).nextAll(".play_link").toggle();
+   		      jQuery(this).nextAll(".cate_link").toggle();
    		  	});
    	      
 	});
@@ -101,11 +111,13 @@ jQuery(document).ready(function() {
 jQuery(document).ready(function() {
 	
 	jQuery( this ).find(".info").hide();
+    
+	
 	 jQuery('.video_container').hover(
 			  function() {
-				      jQuery( this ).find(".play").hide();
+				     // jQuery( this ).find(".play").hide();
  
-				      jQuery( this ).find(".flip_n").stop().animate({width: '40px'},function(){
+				      jQuery( this ).find(".flip_n").stop().animate({width: '15%'},function(){
 					  
 					  jQuery( this ).find(".info").show(); 
 				  });
@@ -113,10 +125,10 @@ jQuery(document).ready(function() {
 
 					  if(!jQuery( this ).find(".video").hasClass('flipped') && !jQuery( this ).find(".video").find(".back").hasClass('flipped_ie'))
 						  {
-						  jQuery( this ).find(".play").fadeIn(500);
+						  //jQuery( this ).find(".play").fadeIn(500);
 						  }
 						  jQuery( this ).find(".info").stop().hide();
-					  	  jQuery( this ).find(".flip_n").stop().animate({width: '11px'});
+					  	  jQuery( this ).find(".flip_n").stop().animate({width: '4%'});
 				  }
 				);
 	 
@@ -151,7 +163,7 @@ jQuery(document).ready(function() {
  		
  		 jQuery( ".flip_n" ).trigger( "click" );
  		  	
- 		jQuery(".play").hide();		
+ 				
  	  
  	  });
 	 

@@ -194,23 +194,22 @@ border-radius: 8px;
 left: 0px;
 background-image: url(../../../../media/jui/img/glyphicons-halflings.png);
 background-position: -119px 66px;
-cursor: pointer;
 }
 .flip_n
 {
 bottom: 3%;
 height: 16px;
-width: 11px;
+width: 4%;
 border: 1px solid rgba(200, 200, 200, 0.6);
 border-radius: 8px;
 left: 3%;
-background-position: -119px 64px;
-cursor: pointer;
+cursor: help;
 background-color: rgba(240, 240, 240, 0.75);
 font-size: 80%;
 font-family: 'Spinnaker', sans-serif;
 text-align: right;
 padding-right: 5px;
+cursor: pointer;
 }
 .flip_n span
 {
@@ -225,7 +224,6 @@ border: 1px solid rgba(200, 200, 200, 0.6);
 border-radius: 8px;
 right: 3%;
 background-position: -119px 64px;
-cursor: pointer;
 background-color: rgba(240, 240, 240, 0.75);
 font-size: 80%;
 font-family: 'Spinnaker', sans-serif;
@@ -241,7 +239,7 @@ border-radius: 8px;
 right: 0px;
 background-image: url(../../../../media/jui/img/glyphicons-halflings.png);
 background-position: -47px -23px;
-cursor: pointer;
+
 }
 .play
 {
@@ -253,6 +251,65 @@ width: 50px;
 margin-left: -25px;
 margin-top: -25px;
 display: block;
+}
+.play_link
+{
+bottom: 3%;
+height: 16px;
+width: 100px;
+border: 1px solid rgba(200, 200, 200, 0.6);
+border-radius: 8px;
+left: 25%;
+cursor: pointer;
+background-color: rgba(240, 240, 240, 0.75);
+font-size: 80%;
+font-family: 'Spinnaker', sans-serif;
+padding-left: 5px;
+display: block;
+}
+.link_mini
+{
+
+}
+.link_mini_cate
+{
+margin-left: 10%;
+}
+.play_icon
+{
+bottom: 0px;
+height: 16px;
+width: 16px;
+border: 0px;
+border-radius: 8px;
+right: 0px;
+background-image: url(../../../../media/jui/img/glyphicons-halflings.png);
+background-position: -192px -23px;
+}
+.cate_link
+{
+bottom: 3%;
+height: 16px;
+width: 100px;
+border: 1px solid rgba(200, 200, 200, 0.6);
+border-radius: 8px;
+left: 25%;
+cursor: pointer;
+background-color: rgba(240, 240, 240, 0.75);
+font-size: 80%;
+font-family: 'Spinnaker', sans-serif;
+padding-left: 5px;
+display: block;
+}
+.cate_icon
+{
+bottom: 0px;
+height: 16px;
+width: 16px;
+border: 0px;
+left: 1%;
+background-image: url(../../../../media/jui/img/glyphicons-halflings.png);
+background-position: -238px 0px;
 }
 .video_data
 {
