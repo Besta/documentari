@@ -24,6 +24,7 @@ defined('_JEXEC') or die;
 						$date =JHtml::date($date , 'd-m-Y');
 						$show = true;
 						$item->tempo= JHtml::_("Documentary.getConvert",$item->tempo );
+						
 
 						?>
 	
@@ -32,11 +33,21 @@ defined('_JEXEC') or die;
 			 <?php echo $item->tempo; ?>
 			 <div class="time video_button"></div>
 			 </div>
-			 <a class="play video_button"  href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"></a>
-			 
+			 		 
 			 <div class="flip_n video_button"><div class="info">info</div>
 			 <div class="flip video_button"></div>
 			 </div>
+			 <a class="play video_button"  href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"></a>
+			 
+			 <a class="play_link video_button" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>">
+			 <div class="link_mini video_button">vai al video</div> 
+			 <div class="play_icon video_button"></div>
+			 </a>
+			 <a class="cate_link video_button" href="<?php echo JRoute::_('index.php?option=com_documentary&view=videos&catid='.(int)$item->catid)?>">
+			 <div class="cate_icon video_button"></div>
+			 <div class="link_mini_cate video_button"><?php echo $item->tcat; ?></div> 
+			 </a>
+			 
 			 <div id="card" class="video">
    			 
      		 
