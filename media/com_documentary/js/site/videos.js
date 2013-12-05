@@ -56,10 +56,10 @@ jQuery(document).ready(function() {
 	 
 	 
 	 var ht=jQuery('.video_container').find('.video_title').height()-3;
-	 var hf=jQuery('.video_container').find('.video_title').height()-3;
+
 	 jQuery('.video_container').find('.video_title').css('font-size',ht+'px');
-	 jQuery('.video_container').find('.video_description').css('font-size',ht+'px');
-	// jQuery('.video_container').find('.flip_n').css('font-size',hf+'px');
+	 //jQuery('.video_container').find('.video_description').css('font-size',ht+'px');
+	 //jQuery('.video_container').find('.flip_n').css('font-size',hf+'px');
 	 
 	 
 	});
@@ -73,7 +73,8 @@ jQuery(document).ready(function() {
 	 
    	  jQuery(".flip_n").click(function() {
    		
-   		  if(BrowserDetect.browser=='Explorer')
+   		  console.log(BrowserDetect.browser);
+   		  if(BrowserDetect.browser=='Other')
    		  {
    			
    			 if(!jQuery(this).nextAll(".video").find(".back").hasClass('flipped_ie'))
@@ -117,7 +118,7 @@ jQuery(document).ready(function() {
 			  function() {
 				     // jQuery( this ).find(".play").hide();
  
-				      jQuery( this ).find(".flip_n").stop().animate({width: '15%'},function(){
+				      jQuery( this ).find(".flip_n").stop().animate({width: '40px'},function(){
 					  
 					  jQuery( this ).find(".info").show(); 
 				  });
@@ -128,7 +129,7 @@ jQuery(document).ready(function() {
 						  //jQuery( this ).find(".play").fadeIn(500);
 						  }
 						  jQuery( this ).find(".info").stop().hide();
-					  	  jQuery( this ).find(".flip_n").stop().animate({width: '4%'});
+					  	  jQuery( this ).find(".flip_n").stop().animate({width: '11px'});
 				  }
 				);
 	 
@@ -161,14 +162,11 @@ jQuery(document).ready(function() {
 
  	  jQuery( ".tutto" ).click(function() {
  		
- 		 jQuery( ".flip_n" ).trigger( "click" );
- 		  	
- 				
+ 		 jQuery( ".flip_n" ).trigger( "click" );	
  	  
  	  });
 	 
 	});
 
-
-
+                     
 

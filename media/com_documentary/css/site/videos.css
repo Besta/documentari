@@ -104,14 +104,17 @@ overflow: hidden;
 }
 .back > .video_description
 {
+font-size: 0.8em;
 position: relative;
 top: 1%;
 left: 0px;
 width: 98%;
 height: 46%;
 background-color: transparent;
-color: rgb(100, 100, 100);	
+color: rgb(100, 100, 100);
 overflow: hidden;
+padding-bottom: 1%;
+line-height: 1.2em;
 
 padding-bottom: 1%;
 }
@@ -199,7 +202,7 @@ background-position: -119px 66px;
 {
 bottom: 3%;
 height: 16px;
-width: 4%;
+width: 11px;
 border: 1px solid rgba(200, 200, 200, 0.6);
 border-radius: 8px;
 left: 3%;
@@ -256,16 +259,17 @@ display: block;
 {
 bottom: 3%;
 height: 16px;
-width: 100px;
+width: 45px;
 border: 1px solid rgba(200, 200, 200, 0.6);
 border-radius: 8px;
-left: 25%;
+left: 50%;
 cursor: pointer;
 background-color: rgba(240, 240, 240, 0.75);
 font-size: 80%;
 font-family: 'Spinnaker', sans-serif;
 padding-left: 5px;
 display: block;
+margin-left: -45px;
 }
 .link_mini
 {
@@ -288,12 +292,12 @@ background-position: -192px -23px;
 }
 .cate_link
 {
-bottom: 3%;
+top: 12%;
 height: 16px;
 width: 100px;
 border: 1px solid rgba(200, 200, 200, 0.6);
 border-radius: 8px;
-left: 25%;
+left: 3%;
 cursor: pointer;
 background-color: rgba(240, 240, 240, 0.75);
 font-size: 80%;

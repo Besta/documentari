@@ -40,7 +40,7 @@ defined('_JEXEC') or die;
 			 <a class="play video_button"  href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"></a>
 			 
 			 <a class="play_link video_button" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>">
-			 <div class="link_mini video_button">vai al video</div> 
+			 <div class="link_mini video_button">Play</div> 
 			 <div class="play_icon video_button"></div>
 			 </a>
 			 <a class="cate_link video_button" href="<?php echo JRoute::_('index.php?option=com_documentary&view=videos&catid='.(int)$item->catid)?>">
