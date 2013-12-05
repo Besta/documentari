@@ -1,3 +1,22 @@
+function setHeight(){
+	jQuery('.back').each(function(){
+		var h=jQuery(this).height();
+		var ht= jQuery(this).find(".video_title").height();
+		var h4=jQuery(this).find(".video_data").height();
+		var h5=jQuery('.play_link').height();
+		console.log(jQuery(this).find(".video_title").html());
+		console.log(h);
+		console.log(ht);
+		console.log(h4);
+		console.log(h5);
+		console.log(h*3/100);
+		var hf=h-h5-ht-h4-(h*3/100)-2;
+		jQuery(this).find(".video_description").height(hf+'px');
+	});
+};
+
+
+
 var BrowserDetect = 
 {
     init: function () 
@@ -39,25 +58,23 @@ var BrowserDetect =
 };
 BrowserDetect.init();
 
-function setAutoHeight(){
+jQuery.fn.setAutoHeight = function(){
 	 var w=jQuery('#videos').width();
 	 var w2=jQuery('#videos .video_container').width();
+	 console.log(w2);
 	 var mar=(w*0.4)/100;
+	 console.log((w2-mar-1)*9/16);
 	 jQuery('.video_container').height((w2-mar-1)*9/16);
 	 var ht=jQuery('.video_container').find('.video_title').height()-3;
-	 var hf=jQuery('.video_container').find('.video_title').height()-3;
 	 jQuery('.video_container').find('.video_title').css('font-size',ht+'px');
 	 jQuery('.video_container').find('.video_description').css('font-size',ht+'px');
-}
-jQuery(window).resize(function() {
-	setAutoHeight();
-});
+};
 
-jQuery(document).ready(function() {
-	setAutoHeight();
-});
+jQuery(window).resize(jQuery.fn.setAutoHeight());
 
+jQuery(document).ready(jQuery.fn.setAutoHeight());
 
+//.promise().done(setHeight());
 jQuery(document).ready(function() {
 
 	 jQuery(this).find(".play_link").hide();
@@ -159,7 +176,6 @@ jQuery(document).ready(function() {
  	  });
 	 
 	});
-
 
 
 

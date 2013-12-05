@@ -27,7 +27,7 @@ $doc->addStyleSheet(JUri::base() . 'templates/' . $this->template . '/css/docume
 	<link href='http://fonts.googleapis.com/css?family=Spinnaker' rel='stylesheet' type='text/css'>
 	
 	
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			
 		
