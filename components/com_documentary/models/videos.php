@@ -49,7 +49,7 @@ class DocumentaryModelVideos extends JModelList {
         $catid = JFactory::getApplication()->input->getInt('catid', 0);
         $this->setState('list.catid', $catid);
         
-        $search = JFactory::getApplication()->input->getString('search', '');
+        $search = JFactory::getApplication()->input->getString('cerca', '');
         $this->setState('filter.search', $search);
 
         // List state information.
@@ -69,38 +69,49 @@ class DocumentaryModelVideos extends JModelList {
 
         // Select the required fields from the table.
         $query->select(
-                $this->getState(
-                        'list.select', 'a.*'
-                )
-        );
-
-        $query->from('`#__documentary_video` AS a');
+                $this->getState('list.select', 'd.*')
+        		);
+        
+        $query->from('#__documentary_video AS d');
 
         
 		// Join over the created by field 'created_by'
 		$query->select('created_by.name AS created_by,cat.title AS tcat');
-		$query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
-    	$query->innerjoin('#__categories AS cat ON cat.id = a.catid');    
+		$query->join('LEFT', '#__users AS created_by ON created_by.id = d.created_by');
+    	$query->innerjoin('#__categories AS cat ON cat.id = d.catid');    
 		$categoryId = $this->getState("list.catid", 0);
 		
-		$query->where('a.state = 1');
-    $query->order('a.created_date ASC');
+		$query->where('d.state = 1');
+   		
 		if(!empty($categoryId)) {
-			$query->where('a.catid = '.(int)$categoryId);
+			$query->where('d.catid = '.(int)$categoryId);
 		}
 		
         // Filter by search in title
+        
         $search = $this->getState('filter.search');
+        $search = trim($search);
+        $search = preg_replace("/\s+/",' ', $search);
         if (!empty($search)) {
-            if (stripos($search, 'id:') === 0) {
-                $query->where('a.id = ' . (int) substr($search, 3));
-            } else {
-                $search = $db->Quote('%' . $db->escape($search, true) . '%');
-                $query->where('( a.title LIKE '.$search.' )');
-            }
-        }
 
-       
+        	
+        	$search = explode(" ", $search);
+        
+        	$q.="(";
+        	for ($i=0; $i<count($search);$i++)
+        	{
+        		$q.= "d.title LIKE '%". $db->escape($search[$i], true) ."%' OR " ;
+        		$q.= "d.description LIKE '%". $db->escape($search[$i], true) ."%'" ;
+        		if($i<count($search)-1)
+        	    $q.= " OR ";
+        		
+        		
+            }
+            $q.=")";
+            $query->where($q);	        	 
+        }
+        
+        $query->order('d.created_date DESC');
         return $query;
     }
 

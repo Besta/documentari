@@ -8,7 +8,7 @@
  */
 
 defined('_JEXEC') or die;
-
+if(!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
 // Getting params from template
 $params = JFactory::getApplication()->getTemplate(true)->params;
 
@@ -17,7 +17,10 @@ $doc = JFactory::getDocument();
 $this->language = $doc->language;
 $this->direction = $doc->direction;
 
+$doc->addStyleSheet(JUri::base() . 'templates/'.$this->template.'/css/template.css', $type = 'text/css');
+
 $doc->addStyleSheet(JUri::base() . 'templates/' . $this->template . '/css/documentari.css', $type = 'text/css');
+
 
 ?>
 <!DOCTYPE html>
@@ -42,12 +45,13 @@ $doc->addStyleSheet(JUri::base() . 'templates/' . $this->template . '/css/docume
 	<div class="body">
 			<!-- Header -->
 			<header class="header" role="banner">
-				<jdoc:include type="modules" name="cerca" style="xhtml" />
-				<a class="tutto">mostra tutto</a>
+				<jdoc:include type="modules" name="menu_category" style="xhtml" />
+				<jdoc:include type="modules" name="cerca_video" style="xhtml" />
+				
 			</header>
 					
 					
-			<jdoc:include type="modules" name="menu_category" style="xhtml" />
+			
 			<div class="row-fluid">
 
 				<main id="content" role="main">
@@ -67,4 +71,3 @@ $doc->addStyleSheet(JUri::base() . 'templates/' . $this->template . '/css/docume
 	<jdoc:include type="modules" name="debug" style="none" />
 </body>
 </html>
-

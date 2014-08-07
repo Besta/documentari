@@ -38,20 +38,25 @@ class DocumentaryViewVideos extends JViewLegacy
         $this->pagination	= $this->get('Pagination');
         $this->params       = $app->getParams('com_documentary');
         $this->option 		= JFactory::getApplication()->input->getCmd("option");
-        $catId				=JFactory::getApplication()->input->getInt('catid', 0);
+        $catId				= JFactory::getApplication()->input->getInt('catid', 0);
         
 		if(!empty($catId))
 		{
 			$pathway = $app->getPathway();
+			
 			$catTit=JHTML::_("Documentary.getCategoryName",$catId);
 	        $pathway->addItem($catTit->title, 'index.php?option=com_documentary&view=videos&catid='.$catId);
 		}
         
+		$catTit=JHTML::_("Documentary.getCategoryName",$catId);
         
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {;
             throw new Exception(implode("\n", $errors));
         }
+
+        $show = true;
+        
         
         $this->_prepareDocument();
         parent::display($tpl);
@@ -103,7 +108,11 @@ class DocumentaryViewVideos extends JViewLegacy
 			$this->document->setMetadata('robots', $this->params->get('robots'));
 		}
 		$this->document->addStyleSheet( 'media/'.$this->option.'/css/site/videos.css');
+		$this->document->addScript('media/'.$this->option.'/js/site/jquery.timers.js');
+		$this->document->addScript('media/'.$this->option.'/js/site/jquery.dotdotdot.min.js');
 		$this->document->addScript('media/'.$this->option.'/js/site/videos.js');
+		
+		
 
 	}    
     	

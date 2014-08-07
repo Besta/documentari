@@ -1,36 +1,42 @@
 @CHARSET "UTF-8";
 
 #videos{	
-	width: 85%;
-	float: left;
-
-     
+	width: 100%;
+	float: left; 
 }
-
 
 #videos .video_container{
 	display: block;	
 	float: left;
 	margin: 0.2% 0.2%;
-	width: 24.5%;	
+	width: 24.5%;
+
+
 	position: relative;
 	overflow: hidden;
 	background: rgb(240, 240, 240);
 }
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 1200px) and (max-width: 1550px) {
   #videos .video_container{
-    width:32.4% ;
+    
+    
+    width:24.5% ;
+    
+    margin: 0.2% 0.2%;
   }
 }
-@media (min-width: 481px) and (max-width: 767px) {
+
+@media (min-width: 712px) and (max-width: 1199px) {
   #videos .video_container{
     width:49.4% ;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 711px) {
   #videos .video_container{
    width:99.4% ;
+   margin: 1.2% 0.2%;
   }
+
 }
 
 #videos .video{
@@ -59,19 +65,14 @@
 }
 .video_title
 {
-text-decoration: none;
-font-size: 10pt;
-font-family: 'Spinnaker', sans-serif;
-display: block;
 color: rgb(39, 150, 255);
-font-weight: 700;
-padding-left: 1%;
-padding-right: 1%;
+color: rgb(32, 162, 68);
+font-variant: small-caps;
 }
+
 .video_description
 {
 text-decoration: none;
-
 text-align: justify;
 font-family: 'Spinnaker', sans-serif;
 display: block;
@@ -80,7 +81,7 @@ padding-right: 1%;
 }
 .video_description span
 {
-font-weight: 700;
+
 
 }
 .front > .video_title
@@ -88,35 +89,36 @@ font-weight: 700;
 height: 10%;
 text-overflow: ellipsis;
 white-space: nowrap;
+overflow: hidden;	
+text-decoration: none;
+font-size: 9pt;
+font-family: 'Spinnaker', sans-serif;
+display: block;
+
+padding-left: 1%;
+padding-right: 1%;
 overflow: hidden;
+
+
 }
 
-.back > .video_title
+.back  .video_title
 {
-position: relative;
-top: 0px;
-left: 0px;
-width: 98%;
 
-background-color: transparent;
-overflow: hidden;
 
 }
 .back > .video_description
 {
 font-size: 0.8em;
-position: relative;
 top: 1%;
 left: 0px;
 width: 98%;
-height: 46%;
+height: 70%;
 background-color: transparent;
 color: rgb(100, 100, 100);
 overflow: hidden;
 padding-bottom: 1%;
 line-height: 1.2em;
-
-padding-bottom: 1%;
 }
 .video_link
 {
@@ -134,7 +136,7 @@ padding-bottom: 1%;
 
 .video_title:hover{
 text-decoration: underline;
-text-shadow: 0px 0px 0px blak;
+
 }
     #card {
       -webkit-transition: -webkit-transform 1s;
@@ -171,16 +173,16 @@ text-shadow: 0px 0px 0px blak;
               transform: translateX( -100% ) rotateY( -180deg );
               -ms-transform: translateX( -100% ) rotateY( -180deg );
     }
-    #card .front {
+    #card > .front {
 
     }
 
-    #card .back {
+    #card > .back {
       -webkit-transform: rotateY( 180deg );
          -moz-transform: rotateY( 180deg );
            -o-transform: rotateY( 180deg );
               transform: rotateY( 180deg );
-            
+       
     }
 .video_button
 {
@@ -246,15 +248,20 @@ background-position: -47px -23px;
 }
 .play
 {
- background-image: url('../../../../images/play.png');
- top: 50%;
+background-image: url(../../../../media/jui/img/glyphicons-halflings-big.png);
+top: 50%;
 left: 50%;
-height: 50px;
-width: 50px;
-margin-left: -25px;
-margin-top: -25px;
+height: 40px;
+width: 40px;
+margin-left: -24px;
+margin-top: -24px;
 display: block;
+border-radius: 24px;
+background-color: rgba(240, 240, 240, 0.6);
+background-position: -498px -769px;
+border: 2px solid rgba(0, 0, 0, 0.5);
 }
+
 .play_link
 {
 bottom: 3%;
@@ -277,7 +284,8 @@ margin-left: -45px;
 }
 .link_mini_cate
 {
-margin-left: 10%;
+margin-left: 12%;
+font-variant: small-caps;
 }
 .play_icon
 {
@@ -299,7 +307,7 @@ border: 1px solid rgba(200, 200, 200, 0.6);
 border-radius: 8px;
 left: 3%;
 cursor: pointer;
-background-color: rgba(240, 240, 240, 0.75);
+background-color: rgba(240, 240, 240, 1);
 font-size: 80%;
 font-family: 'Spinnaker', sans-serif;
 padding-left: 5px;
@@ -311,22 +319,61 @@ bottom: 0px;
 height: 16px;
 width: 16px;
 border: 0px;
-left: 1%;
+left: 2%;
 background-image: url(../../../../media/jui/img/glyphicons-halflings.png);
-background-position: -238px 0px;
+background-position: -263px 0px;
 }
 .video_data
 {
-bottom: 16%;
+bottom: 23%;
+left: 0%;	
 font-size: 60%;
 font-family: 'Spinnaker', sans-serif;
 padding-left: 1%;
+padding-right: 1%;
 }
 .video_like
 {
-bottom: 16%;
-right:1%;
+bottom: 23%;
+right:0%;
 font-size: 60%;
 font-family: 'Spinnaker', sans-serif;
 padding-left: 1%;
+padding-right: 1%;	
+}
+.img_like
+{
+height: 13px;
+width: 14px;
+border: 0px;
+background-image: url(../../../../media/jui/img/glyphicons-halflings.png);
+background-position: -96px 15px;
+display: inline-block;	
+}
+.img_dislike
+{
+height: 13px;
+width: 14px;
+border: 0px;
+background-image: url(../../../../media/jui/img/glyphicons-halflings.png);
+background-position: -120px 15px;
+display: inline-block;		
+}
+.video_visualizzazioni
+{
+bottom: 16%;
+right: 0%;
+font-size: 60%;
+font-family: 'Spinnaker', sans-serif;
+padding-left: 1%;
+padding-right: 1%;	
+}
+.video_rating
+{
+bottom: 16%;
+left: 0%;
+font-size: 60%;
+font-family: 'Spinnaker', sans-serif;
+padding-left: 1%;
+padding-right: 1%;			
 }

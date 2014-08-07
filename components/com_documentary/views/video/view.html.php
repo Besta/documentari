@@ -112,8 +112,8 @@ class DocumentaryViewVideo extends JViewLegacy {
 		{
 			$this->document->setMetadata('robots', $this->params->get('robots'));
 		}
-      $this->document->addScript('http://code.jquery.com/jquery-1.10.2.min.js');
       $this->document->addScript('media/com_documentary/js/site/video_like.js');  
+
 	}        
     
 }

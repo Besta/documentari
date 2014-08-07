@@ -12,11 +12,14 @@ defined('_JEXEC') or die;
 ?>
 <?php 
 	$show = false; 
-	$height = (ceil(count($this->items)/4)*220); 
-?>
+	
+	
+	?>
 
+<div class="pagination"><?php echo $this->pagination->getPagesLinks();?></div>
 <div id="videos">
-
+		
+		
 		
         <?php foreach ($this->items as $item) { ?>
 			<?php
@@ -24,7 +27,7 @@ defined('_JEXEC') or die;
 						$date =JHtml::date($date , 'd-m-Y');
 						$show = true;
 						$item->tempo= JHtml::_("Documentary.getConvert",$item->tempo );
-						
+						$gradimento =  JHtml::_("Documentary.calculatePercent",$item->like,$item->dislike ); 
 
 						?>
 	
@@ -43,6 +46,9 @@ defined('_JEXEC') or die;
 			 <div class="link_mini video_button">Play</div> 
 			 <div class="play_icon video_button"></div>
 			 </a>
+			 
+			 <a class="video_l"style="top:0%;height: 100%;width: 100%; position: absolute;" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"></a>
+			 
 			 <a class="cate_link video_button" href="<?php echo JRoute::_('index.php?option=com_documentary&view=videos&catid='.(int)$item->catid)?>">
 			 <div class="cate_icon video_button"></div>
 			 <div class="link_mini_cate video_button"><?php echo $item->tcat; ?></div> 
@@ -53,19 +59,22 @@ defined('_JEXEC') or die;
      		 
      		 <div class="front">
      		 
-     		 <a class="video_title" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"><?php echo ucfirst(strtolower($item->title)); ?></a>
+     		 <a class="video_title" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>" title="<?php echo ucfirst(strtolower($item->title)); ?>"><?php echo ucfirst(strtolower($item->title)); ?></a>
 			 <a class="video_link"  style="background-image:url(<?php echo $item->image?>)" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"  ></a>
      		 </div>
       		<div class="back">
-      		
-      		 <a class="video_title" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"><?php echo ucfirst(strtolower($item->title)); ?></a>
-      		 <a class="video_description" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"><span>Descrizione : </span><?php echo $item->description; ?></a>
-      		 <div class="video_data video_button" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>">pubblicato: <?php echo $date; ?></div>
-      		 <div class="video_like video_button">like: 50  rating: 80%</div>
-      		 
+
+      		 <a class="video_description" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>">
+      		 <span class="video_title" href="<?php echo JRoute::_('index.php?option=com_documentary&view=video&id='.(int)$item->id)?>"><?php echo ucfirst(strtolower($item->title)); ?></span>
+      		 <br>
+      		 <span><strong>Descrizione: </strong></span><?php echo $item->description; ?></a>
+      		 <div class="video_data video_button">Pubblicato: <?php echo $date; ?></div>
+      		 <div class="video_visualizzazioni video_button">Visualizzazioni: <?php echo $item->visualizzazioni; ?></div>
+      		 <div class="video_like video_button"><div class="img_like"></div><?php echo $item->like; ?> 700 <div class="img_dislike"></div> 170 <?php echo $item->dislike; ?></div>
+      		 <div class="video_rating video_button">Gradimento: <?php echo $gradimento; ?></div>
       		 </div>
-      
-   			 </div>			
+   			 </div>	
+   					
 			 </div>			
 						
 
@@ -75,10 +84,7 @@ defined('_JEXEC') or die;
             echo JText::_('COM_DOCUMENTARY_NO_ITEMS');
         endif;
         ?>
+       
 </div>
-<?php if ($show): ?>
-    <div class="pagination">
-        <p class="counter"><?php echo $this->pagination->getPagesCounter(); ?></p>
-        <?php echo $this->pagination->getPagesLinks(); ?>
-    </div>
-<?php endif; ?>
+ <div class="pagination"><?php echo $this->pagination->getPagesLinks();?>     </div>
+    

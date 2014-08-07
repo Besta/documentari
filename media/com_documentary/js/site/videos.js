@@ -1,4 +1,33 @@
 
+// primo metedo per creare una funzione Jquery style plugin
+jQuery.fn.extend({
+
+	setAutoHeight : function(){
+		
+		 var w=jQuery('#videos').width();
+		 var w2=jQuery('#videos .video_container').outerWidth();
+	
+
+		 
+		 
+		 var mar=(w*0.4)/100;
+
+		 
+		 jQuery('.video_container').height((w2-mar-1)*9/16);
+		 
+		 var ht=jQuery('.video_container').find('.video_title').height();
+		// console.log(ht+'titolo_prima');
+		 jQuery('.video_container').find('.front').find('.video_title').css('font-size',ht-1+'px');
+		 
+		 
+		 
+		 //jQuery('.video_container').find('.back').find('.video_description').find('.video_title').css('font-size',ht-1+'px');
+		 //jQuery('.video_container').find('.video_description').css('font-size',ht+'px');		
+		 //jQuery.fn.setHeight;
+	}
+
+});
+
 var BrowserDetect = 
 {
     init: function () 
@@ -42,44 +71,26 @@ BrowserDetect.init();
 
 
 
-jQuery(document).ready(function() {
-	
-	 var w=jQuery('#videos').width();
-	 var w2=jQuery('#videos .video_container').width();
-	 var mar=(w*0.4)/100;
 
-	 //var ncol=3;
-	 
-	 //jQuery('.video_container').width(w/ncol-mar-1);
-	 jQuery('.video_container').height((w2-mar-1)*9/16);
-	 
-	 
-	 
-	 var ht=jQuery('.video_container').find('.video_title').height()-3;
 
-	 jQuery('.video_container').find('.video_title').css('font-size',ht+'px');
-	 //jQuery('.video_container').find('.video_description').css('font-size',ht+'px');
-	 //jQuery('.video_container').find('.flip_n').css('font-size',hf+'px');
-	 
-	 
-	});
+
+
+
 
 
 jQuery(document).ready(function() {
-
-	
 
 	 jQuery(this).find(".play_link").hide();
-	 
-   	  jQuery(".flip_n").click(function() {
+	   
+   	  jQuery(".flip_n").on('flipdiv',function() {
    		
-   		  console.log(BrowserDetect.browser);
+   		
+   		 
    		  if(BrowserDetect.browser=='Other')
    		  {
    			
    			 if(!jQuery(this).nextAll(".video").find(".back").hasClass('flipped_ie'))
-   				 { 
-   				
+   				 { 			
 		   			 jQuery(this).nextAll(".video").find(".back").addClass('flipped_ie');
 		   			 jQuery(this).nextAll(".video").find(".back").css('transform','rotateY(0deg)');
 		   			 jQuery(this).nextAll(".video").find(".front").fadeOut(500);
@@ -98,40 +109,56 @@ jQuery(document).ready(function() {
    		  	{	
    			  
    			  jQuery(this).nextAll(".video").toggleClass('flipped');
-   			  
-//   			  if(jQuery(this).next(".video").hasClass('flipped'))
-//				   jQuery( this ).find(".play_link").show();   
+   			   
    		  	}
    		      jQuery(this).nextAll(".play").toggle();
    		      jQuery(this).nextAll(".play_link").toggle();
    		      jQuery(this).nextAll(".cate_link").toggle();
-   		  	});
-   	      
+   		      
+   		   
+   		   $(this).nextAll(".video").find(".back").find(".video_description").dotdotdot({
+    			watch: 'window'
+    		});
+   	  });
+   	  	
 	});
+
 
 jQuery(document).ready(function() {
 	
 	jQuery( this ).find(".info").hide();
-    
-	
+
 	 jQuery('.video_container').hover(
 			  function() {
-				     // jQuery( this ).find(".play").hide();
- 
-				      jQuery( this ).find(".flip_n").stop().animate({width: '40px'},function(){
-					  
-					  jQuery( this ).find(".info").show(); 
-				  });
+				     
+				      jQuery( this ).find(".link_mini").css('text-shadow','0px 0px 10px rgb(32, 162, 68)');
+			      
+			  		  jQuery( this ).find(".front .video_title").css('text-shadow','0px 0px 10px rgb(32, 162, 68)'); 
+			  		  
+			  		  jQuery( this ).find(".flip_n").stop().animate({width: '40px'},function(){
+					  jQuery( this ).find(".info").show();
+					  });
+			  		  jQuery( this ).find(".flip_n").trigger("flipdiv");
+
+			  		  
 				  }, function() {
 
-					  if(!jQuery( this ).find(".video").hasClass('flipped') && !jQuery( this ).find(".video").find(".back").hasClass('flipped_ie'))
-						  {
-						  //jQuery( this ).find(".play").fadeIn(500);
-						  }
-						  jQuery( this ).find(".info").stop().hide();
-					  	  jQuery( this ).find(".flip_n").stop().animate({width: '11px'});
+//					  if(!jQuery( this ).find(".video").hasClass('flipped') && !jQuery( this ).find(".video").find(".back").hasClass('flipped_ie'))
+//						  {
+//						 
+//						  }
+						  jQuery( this ).find(".info").hide();
+					  	  jQuery( this ).find(".flip_n").stop(1,0).animate({width: '11px'});
+					  	  jQuery( this ).find(".front .video_title").css('text-shadow','0px 0px 0px');
+	    				  
+					  	  jQuery( this ).find(".link_mini").css('text-shadow','0px 0px 0px');
+					  	  
+					  	  //jQuery( this ).find(".flip_n").show();
+					  	  
+					  	  jQuery( this ).find(".flip_n").trigger("flipdiv");
+					  	
 				  }
-				);
+			     );
 	 
 	});
 
@@ -144,7 +171,7 @@ jQuery(document).ready(function() {
 	jQuery(window).scroll(function() {
 		 
 		var scroll=jQuery(document).scrollTop();
-		console.log(scroll);
+		//console.log(scroll);
 			if(scroll>0)
 			{
 			jQuery('header').css('box-shadow','0px 0px '+10+'px 0px');
@@ -157,16 +184,19 @@ jQuery(document).ready(function() {
 	 
 	});
 
-jQuery(document).ready(function() {
-	
+//jQuery(document).ready(function() {
+//	
+//
+// 	  jQuery( ".tutto" ).click(function() {
+// 		
+// 		 jQuery( ".flip_n" ).trigger( "flipdiv" );	
+// 		
+// 	  });
+//	 
+//	});
 
- 	  jQuery( ".tutto" ).click(function() {
- 		
- 		 jQuery( ".flip_n" ).trigger( "click" );	
- 	  
- 	  });
-	 
-	});
+jQuery(document).ready(jQuery.fn.setAutoHeight);
+jQuery(window).resize(jQuery.fn.setAutoHeight);
 
-                     
+
 

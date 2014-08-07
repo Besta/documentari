@@ -17,15 +17,17 @@ $lang->load('com_documentary', JPATH_ADMINISTRATOR);
 <?php if ($this->item) : ?>
         
     <div class="item_fields"> 
-		<div class="video_title"> <?php echo $this->item->title ?></div>
+		<div class="video_titolo"> TITOLO: <?php echo $this->item->title;?></div>
 		<div class="video_video"><?php echo $this->item->iframe; ?> </div>
-		<div class="video_categoria"> TITOLO: <?php echo $this->item->title;?></div>
+		<div class="video_desc"> <?php echo $this->item->description ?></div>
+		
+		
 		<div class="video_tempo">Durata: <?php echo $this->item->tempo; ?></div>
         
 
 		<div class="video_categoria"> Categoria: <a href="<?php echo JRoute::_('index.php?option=com_documentary&view=videos&catid='.(int)$this->item->catid)?>"> <?php echo $this->item->categoria; ?> </a>   </div>
 	    <div class="video_like"><input type="hidden" value="1" id="input_like" > Like: <?php echo $this->item->vlike; ?></div>
-	    <div class="video_rank"><?php echo $this->item->like_percents; ?>%</div>
+	    <div class="video_rank">Gradimento:<?php echo $this->item->like_percents; ?>%</div>
 	    <div class="video_dislike"><input type="hidden" value="-1" id="input_like" >Dislike: <?php echo $this->item->vdislike; ?></div>
 	    
     <div class="video_visto">Gia visto</div>
